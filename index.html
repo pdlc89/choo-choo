@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script> 
+  <script src="assets/javascript/app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+
+	<title>Choo-Choo!</title>
+</head>
+
+<body>
+	<header>
+		<div id="title">
+			<h1>Train Schedule</h1>
+			<h3 id="sub-title">A Comprehensive Directory of Train Scheduling</h3>
+		</div>
+	</header>
+		<div class="info-display">
+			<div id="info-title">
+				<table>
+					<thead>
+						<tr>
+							<th>Index</th>
+							<th>Train Name</th>
+							<th>Destination</th>
+							<th>Freqency(min)</th>
+							<th>Next Arrival</th>
+							<th>Minutes Away</th>
+						</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+				</table>
+				<div id="info-display">
+					
+				</div>
+			</div>
+			
+		</div>
+		<div class="input-feild">
+			<div id="input-title">
+				<div id="input-feild">
+					<h3>Train Name</h3>
+					<input type="input" name="train" class="train-info" id="train">
+					<h3>Destination</h3>
+					<input type="input" name="destination" class="train-info" id="destination">
+					<h3>First Train Time (HH:mm -military time)</h3>
+					<input type="input" name="start" class="train-info" id="time">
+					<h3>Frequency (min)</h3>
+					<input type="input" name="frequency" class="train-info" id="rate">
+				</div>
+				<div class="revise">
+					<button id="submit">Submit</button>
+					Index value<input type="input" name="update" class="amend" id="renew">
+					<button id="update">Update</button>
+					Index value<input type="input" name="delete" class="amend" id="anul">
+					<button id="delete">Delete</button>
+				</div>
+			</div>
+			
+		</div>
+
+</body>
+</html>
