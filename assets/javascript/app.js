@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
- var rowCount = 0
  var train = "";
  var destination = "";
  var time = "";
@@ -30,10 +29,14 @@ function serverUpdate() {
         });
 }
  function appendHTML() {
-  var arrayVH = parseInt(indexValue);
+    var arrayVH = scheduleArray.length;
+    var elm = $("td > #").index(this);
+    console.log("index of: " + elm)
+  //var arrayVH = parseInt(indexValue);
   var arrayVC = arrayVH - 1;
+            
         var tr = $('<tr>')
-          .append($('<td id="index">').text(indexValue))
+          .append($('<td id="index">').text(arrayVH))
           .append($('<td>').text(scheduleArray[arrayVC].train))
           .append($('<td>').text(scheduleArray[arrayVC].destination))
           .append($('<td>').text(scheduleArray[arrayVC].time))
@@ -41,30 +44,31 @@ function serverUpdate() {
           tr.attr("id", indexValue);
         $('tbody').append(tr)
         $("input").val("");
+         var train = "";
+         var destination = "";
+         var time = "";
+         var rate = "";
  }
  function retrieveData() {
         train = $("#train").val();
         destination = $("#destination").val();
         time = $("#time").val();
         rate = $("#rate").val();
- }
- function indexNumber() {
-    for (var i = 0; i < scheduleArray.length; i++) {
-      //$("#index").empty();
-      $("#index").text(i);
-      }
-  };
-//buttoon logic area
-     $('#submit').on('click', function () {
-        ++indexValue;
-          retrieveData();
+
+          
           var data = {};
           data.train = train;
           data.destination = destination;
           data.time = time;  
           data.rate = rate;
           scheduleArray.push(data);
-          //
+
+ }
+
+//buttoon logic area
+     $('#submit').on('click', function () {
+        ++indexValue;
+        retrieveData();
           //serverUpdate();
          
           console.log(scheduleArray);
@@ -78,21 +82,16 @@ function serverUpdate() {
           holder = parseInt(holder);
           var arrayValue = holder - 1;
           console.log("this is your: " + arrayValue);
-
-          $("tbody > #" + holder).empty();
-
-        $("#"+ holder)
-          .append($('<td>').text(holder))
-          .append($('<td>').text(train))
-          .append($('<td>').text(destination))
-          .append($('<td>').text(time))
-          .append($('<td>').text(rate))
-          .attr("id", holder);
           
+          $("tbody > #" + holder).remove();
+
+          var updateValue = arrayValue;
+          var removeElm = 1;
+          scheduleArray.splice(updateValue,removeElm);
           $("input").val("");
-
-
-
+          appendHTML();
+          console.log(scheduleArray);
+          
       });
 
       $("#delete").on("click", function(){
@@ -102,9 +101,12 @@ function serverUpdate() {
           var arrayValue = holder - 1;
           console.log("this is your: " + arrayValue);
 
-        $("tbody > #" + holder).empty();
+          $("tbody > #" + holder).remove();
 
-        indexNumber();
+          var updateValue = arrayValue;
+          var removeElm = 1;
+          scheduleArray.splice(updateValue,removeElm);
+          $("input").val("");
 
       });
 
